@@ -26,7 +26,7 @@ struct MainShapeView: View {
             Spacer()
             
             if showShape {
-                GradientRectangles(width: 250, height: 250)
+                StartView(width: 250, height: 250)
                     .animation(.default)
                     .transition(.transition)
             }
