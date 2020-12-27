@@ -13,36 +13,44 @@ struct DropsView: View {
     let point: Point
     
     var body: some View {
-        let dropsPoints = [
+        let dropCGPoints = [
             [
-                point.firstPointValue, point.seventhPointValue,
-                point.firstPointValue, point.eighthPointValue
+                CGPoint(x: point.firstPointValue,
+                        y: point.seventhPointValue),
+                CGPoint(x: point.firstPointValue,
+                        y: point.eighthPointValue)
             ],
             [
-                point.secondPointValue, point.ninthPointValue,
-                point.secondPointValue, point.tenthPointValue
+                CGPoint(x: point.secondPointValue,
+                        y: point.ninthPointValue),
+                CGPoint(x: point.secondPointValue,
+                        y: point.tenthPointValue)
             ],
             [
-                point.fourthPointValue, point.seventhPointValue,
-                point.fourthPointValue, point.eighthPointValue
+                CGPoint(x: point.fourthPointValue,
+                        y: point.seventhPointValue),
+                CGPoint(x: point.fourthPointValue,
+                        y: point.eighthPointValue)
             ],
             [
-                point.eleventhPointValue, point.twelfthPointValue,
-                point.eleventhPointValue, point.fourteenthPointValue
+                CGPoint(x: point.eleventhPointValue,
+                        y: point.twelfthPointValue),
+                CGPoint(x: point.eleventhPointValue,
+                        y: point.fourteenthPointValue)
             ],
             [
-                point.thirteenthPointValue, point.twelfthPointValue,
-                point.thirteenthPointValue, point.fourteenthPointValue
+                CGPoint(x: point.thirteenthPointValue,
+                        y: point.twelfthPointValue),
+                CGPoint(x: point.thirteenthPointValue,
+                        y: point.fourteenthPointValue)
             ]
         ]
         
-        ForEach(0..<dropsPoints.count) { dropPointsIndex in
-            let dropPoints = dropsPoints[dropPointsIndex]
+        ForEach(0..<dropCGPoints.count) { dropCGPointsIndex in
+            let cgPoints = dropCGPoints[dropCGPointsIndex]
             Path { path in
-                path.move(to: CGPoint(x: dropPoints[0],
-                                      y: dropPoints[1]))
-                path.addLine(to: CGPoint(x: dropPoints[2],
-                                         y: dropPoints[3]))
+                path.move(to: cgPoints.first!)
+                path.addLine(to: cgPoints.last!)
             }
             .stroke(
                 Color.black,
